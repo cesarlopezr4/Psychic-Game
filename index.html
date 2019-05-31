@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Phychic-Game </title>
+  </head>
+  <body>
+
+<script type=Text/javascript>
+   
+var wins=0;
+var looses=0;
+var guessLeft=0;
+var guessSoFar= [];
+var computerChoices = ["a","b","c","d","e"];
+var computerGuess ="";
+
+    <p> wins: <span id="wins"> </span></p>;
+    <p> looses: <span id="losses"> </span></p>;
+    <p> guessLeft: <span id="guessLeft"> </span></p>;
+    <p> guessSoFar: <span id="guessSoFar"> </span></p>;
+
+
+function computerSelecRandom(){ 
+    computerGuess=
+    computerChoices [Math.random() * computerChoice.lenght)];
+}
+
+function updateScore() {
+document.querySelector("#wins").innerHTML= wins;
+document.querySelector("#losses").innerHTML= looses;
+document.querySelector("#guessLeft").innerHTML= guessleft;
+document.querySelector("#guessSoFar").innerHTML= guessSoFar;
+
+}
+function resetScores(){
+    guessleft = 9;
+    guessSoFar = [];
+}
+
+computerSelecRandomLetter();
+
+updateScores();
+
+Console.log( computerGuess);
+
+document.onkeyup = function(event) {
+guessLeft --;
+
+var userGuess = event.Key.LowerCase();
+guessSoFar.push(userGuess);
+updateScores();
+
+if (userGuess = computerGuess) {
+    wins ++;
+    updateScore();
+    resetScores();
+    computerSelecRandomLetter();
+}
+
+if (guessLeft === 0) {
+    looses ++;
+    updateScore();
+    resetScore();
+}
+
+
+}    
+
+
+    </script>
+    
+  </body>
+</html>
