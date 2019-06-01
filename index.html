@@ -6,68 +6,79 @@
   </head>
   <body>
 
+<!-- html prompts  -->
+<p> wins: <span id="wins"> </span></p>;
+<p> looses: <span id="losses"> </span></p>;
+<p> guessLeft: <span id="guessLeft"> </span></p>;
+<p> guessSoFar: <span id="guessSoFar"> </span></p>;
+
+
 <script type=Text/javascript>
-   
+//    javascript variables 
 var wins=0;
 var looses=0;
-var guessLeft=0;
+var guessLeft=9;
 var guessSoFar= [];
 var computerChoices = ["a","b","c","d","e"];
-var computerGuess ="";
-
-    <p> wins: <span id="wins"> </span></p>;
-    <p> looses: <span id="losses"> </span></p>;
-    <p> guessLeft: <span id="guessLeft"> </span></p>;
-    <p> guessSoFar: <span id="guessSoFar"> </span></p>;
+var computerGuess = "";
+var randomInteger = 0;
+var userGuess = "";
 
 
-function computerSelecRandom(){ 
-    computerGuess=
-    computerChoices [Math.random() * computerChoice.lenght)];
-}
+function computerSelecRandomLetter() {
+randomInteger = Math.round ( Math.floor(    Math.random() * computerChoices.length    )  );
+computerGuess= computerChoices[randomInteger];
+};
+
+// initialization
 
 function updateScore() {
 document.querySelector("#wins").innerHTML= wins;
 document.querySelector("#losses").innerHTML= looses;
-document.querySelector("#guessLeft").innerHTML= guessleft;
+document.querySelector("#guessLeft").innerHTML= guessLeft;
 document.querySelector("#guessSoFar").innerHTML= guessSoFar;
 
-}
+};
+
 function resetScores(){
-    guessleft = 9;
+    guessLeft = 9;
     guessSoFar = [];
-}
+    wins = 0;
+    looses = 0;
+};
 
 computerSelecRandomLetter();
 
-updateScores();
+updateScore();
 
-Console.log( computerGuess);
+// getting the key value 
 
 document.onkeyup = function(event) {
-guessLeft --;
-
-var userGuess = event.Key.LowerCase();
+guessLeft -- ;
+userGuess = event.key.toLowerCase();
 guessSoFar.push(userGuess);
-updateScores();
+updateScore();
 
-if (userGuess = computerGuess) {
+// comparation between the key value and random generate value of the array --computerChoices
+    if (userGuess === computerGuess) {
     wins ++;
+    // resetScores();
     updateScore();
-    resetScores();
     computerSelecRandomLetter();
-}
-
-if (guessLeft === 0) {
-    looses ++;
+    } 
+    else {
+    // no match
+    looses ++;     
     updateScore();
-    resetScore();
-}
-
-
-}    
-
-
+    computerSelecRandomLetter();
+    }
+      
+    if (guessLeft === 0) {
+        looses ++;
+        resetScores();
+        updateScore();
+    }
+}; 
     </script>
     
   </body>
